@@ -12,13 +12,14 @@ from enum import Enum
 
 class MenuTag(Enum):
     """Tags for menu items."""
-    VEGETARIAN = 'Vegetarian'
-    VEGAN = 'Vegan'
-    HALAL = 'Halal'
-    SEAFOOD_WATCH = 'Seafood Watch'
-    GLUTEN_FREE = 'Made without Gluten-Containing Ingredients'
-    HUMANE = 'Humane'
-    FARM_TO_FORK = 'Farm to Fork'
+
+    VEGETARIAN = "Vegetarian"
+    VEGAN = "Vegan"
+    HALAL = "Halal"
+    SEAFOOD_WATCH = "Seafood Watch"
+    GLUTEN_FREE = "Made without Gluten-Containing Ingredients"
+    HUMANE = "Humane"
+    FARM_TO_FORK = "Farm to Fork"
 
 
 @dataclass(frozen=True)
@@ -35,8 +36,10 @@ class MenuItem:
     """Tags describing the properties of the dish."""
 
     def __str__(self) -> str:
-        return (f'{self.name}: {self.desc}. '
-                f'{"; ".join(map(lambda x: x.value, self.tags))}. Price: ${self.price:.2f}')
+        return (
+            f"{self.name}: {self.desc}. "
+            f'{"; ".join(map(lambda x: x.value, self.tags))}. Price: ${self.price:.2f}'
+        )
 
 
 @dataclass(frozen=True)
@@ -49,8 +52,8 @@ class Menu:
     """Dishes/items on the menu."""
 
     def __str__(self) -> str:
-        s = f'{self.location}: \n'
-        s += '\n'.join(f'- {i.__str__()}' for i in self.items)
+        s = f"{self.location}: \n"
+        s += "\n".join(f"- {i.__str__()}" for i in self.items)
         return s
 
 
@@ -62,4 +65,4 @@ class MenuCollection:
     """Set of menus, each corresponding to an establishment."""
 
     def __str__(self) -> str:
-        return '\n'.join(m.__str__() for m in self.menus)
+        return "\n".join(m.__str__() for m in self.menus)
